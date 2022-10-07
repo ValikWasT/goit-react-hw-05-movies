@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+export const MainInfoBox = styled.div``;
+export const AdditionalBox = styled.div``;
+export const MovieImg = styled.img``;
+export const MovieName = styled.p``;
+export const MovieRating = styled.p``;
+export const MovieInfoTitle = styled.p``;
+export const MovieInfo = styled.p``;
+export const AddInfoList = styled.ul``;
+export const AddInfoItem = styled.li``;
