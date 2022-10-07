@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'Api/fetchApi';
 import {
   MovieImg,
@@ -12,10 +12,12 @@ import {
   AddInfoList,
   AddInfoItem,
 } from './MovieDetailsStyled';
+import { Header } from 'components/Header/Header';
 
 export const MovieDetails = () => {
   const [movieInfo, setmMovieInfo] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     fetchMovieById(movieId).then(r => setmMovieInfo(r));
@@ -27,10 +29,13 @@ export const MovieDetails = () => {
 
   const { poster_path, title, vote_average, overview, genres } = movieInfo.data;
   const genreNames = genres.map(genre => genre.name).join(', ');
+  const BackLinkHref = location.state?.from ?? '/';
 
   return (
     <>
+      <Header />
       <MainInfoBox>
+        <Link to={BackLinkHref}>Back</Link>
         <MovieImg src={`https://image.tmdb.org/t/p/w300/${poster_path}`} />
         <MovieName>{title}</MovieName>
         <MovieRating>{vote_average}</MovieRating>
@@ -44,7 +49,9 @@ export const MovieDetails = () => {
           <AddInfoItem>
             <Link to="cast">Cast</Link>
           </AddInfoItem>
-          <AddInfoItem></AddInfoItem>
+          <AddInfoItem>
+            <Link to="reviews">Reviews</Link>
+          </AddInfoItem>
         </AddInfoList>
         <Outlet />
       </AdditionalBox>

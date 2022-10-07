@@ -23,3 +23,19 @@ export const fetchMovieCast = async movieId => {
     )
     .then(r => r);
 };
+
+export const fetchReviews = async movieId => {
+  return await axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+    )
+    .then(r => r.data.results);
+};
+
+export const fetchMovieByName = async movieName => {
+  return await axios
+    .get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${movieName}`
+    )
+    .then(r => r.data.results);
+};
