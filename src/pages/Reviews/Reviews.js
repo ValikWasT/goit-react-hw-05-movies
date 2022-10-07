@@ -10,7 +10,7 @@ const AuthorName = styled.p``;
 const AuthorReview = styled.p``;
 const ReviewError = styled.p``;
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
@@ -39,3 +39,4 @@ export const Reviews = () => {
     </ReviewBox>
   );
 };
+export default Reviews;

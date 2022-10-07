@@ -11,7 +11,7 @@ const List = styled.ul`
 `;
 const Item = styled.li``;
 
-export const Movies = () => {
+const Movies = () => {
   const [movieNames, setMovieNames] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchValue, setSearchValue] = useState('');
@@ -54,3 +54,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

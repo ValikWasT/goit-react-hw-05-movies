@@ -6,7 +6,7 @@ import { fetchTrends } from 'Api/fetchApi';
 
 const Title = styled.h1``;
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -21,3 +21,4 @@ export const Home = () => {
     </>
   );
 };
+export default Home;

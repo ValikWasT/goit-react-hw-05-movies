@@ -10,7 +10,7 @@ const CastImg = styled.img``;
 const CastName = styled.p``;
 const CastCharacter = styled.p``;
 
-export const Cast = () => {
+const Cast = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
 
@@ -50,3 +50,4 @@ export const Cast = () => {
     </CastBox>
   );
 };
+export default Cast;

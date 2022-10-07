@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'Api/fetchApi';
 import {
@@ -14,7 +14,7 @@ import {
 } from './MovieDetailsStyled';
 import { Header } from 'components/Header/Header';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieInfo, setmMovieInfo] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -53,8 +53,12 @@ export const MovieDetails = () => {
             <Link to="reviews">Reviews</Link>
           </AddInfoItem>
         </AddInfoList>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </AdditionalBox>
     </>
   );
 };
+
+export default MovieDetails;
