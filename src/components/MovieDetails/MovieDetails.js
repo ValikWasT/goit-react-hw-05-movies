@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from 'react';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'Api/fetchApi';
 import {
   MovieImg,
@@ -12,7 +12,24 @@ import {
   AddInfoList,
   AddInfoItem,
 } from './MovieDetailsStyled';
-import { Header } from 'components/Header/Header';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
+const Link = styled(NavLink)`
+  font-size: 24px;
+  text-decoration: none;
+  color: orangered;
+`;
+const LinkBox = styled.div`
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+`;
+const InfoContainer = styled.div`
+  width: 240px;
+`;
 
 const MovieDetails = () => {
   const [movieInfo, setmMovieInfo] = useState(null);
@@ -33,23 +50,32 @@ const MovieDetails = () => {
 
   return (
     <>
-      <MainInfoBox>
+      <LinkBox>
         <Link to={BackLinkHref}>Back</Link>
+      </LinkBox>
+
+      <MainInfoBox>
         <MovieImg src={`https://image.tmdb.org/t/p/w300/${poster_path}`} />
-        <MovieName>{title}</MovieName>
-        <MovieRating>{vote_average}</MovieRating>
-        <MovieInfoTitle>Overview</MovieInfoTitle>
-        <MovieInfo>{overview}</MovieInfo>
-        <MovieInfoTitle>Genres</MovieInfoTitle>
-        <MovieInfo>{genreNames}</MovieInfo>
+        <InfoContainer>
+          <MovieName>{title}</MovieName>
+          <MovieRating>Rating: {vote_average}</MovieRating>
+          <MovieInfoTitle>Overview</MovieInfoTitle>
+          <MovieInfo>{overview}</MovieInfo>
+          <MovieInfoTitle>Genres</MovieInfoTitle>
+          <MovieInfo>{genreNames}</MovieInfo>
+        </InfoContainer>
       </MainInfoBox>
       <AdditionalBox>
         <AddInfoList>
           <AddInfoItem>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: location.state.from }}>
+              Cast
+            </Link>
           </AddInfoItem>
           <AddInfoItem>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location.state.from }}>
+              Reviews
+            </Link>
           </AddInfoItem>
         </AddInfoList>
         <Suspense>

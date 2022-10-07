@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
-import { List, Item } from './TrendsListStyled';
+import { useLocation } from 'react-router-dom';
+import { List, Item, Link } from './TrendsListStyled';
 export const Trends = ({ trends }) => {
   const location = useLocation();
   return (

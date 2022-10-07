@@ -4,11 +4,21 @@ import { fetchReviews } from 'Api/fetchApi';
 import styled from 'styled-components';
 
 const ReviewBox = styled.div``;
-const ReviewList = styled.ul``;
+const ReviewList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
 const ReviewItem = styled.li``;
-const AuthorName = styled.p``;
+const AuthorName = styled.p`
+  text-align: center;
+  font-weight: 700;
+`;
 const AuthorReview = styled.p``;
-const ReviewError = styled.p``;
+const ReviewError = styled.p`
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+`;
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(null);

@@ -4,8 +4,17 @@ import { fetchMovieCast } from 'Api/fetchApi';
 import styled from 'styled-components';
 
 const CastBox = styled.div``;
-const CastList = styled.ul``;
-const CastItem = styled.li``;
+const CastList = styled.ul`
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+const CastItem = styled.li`
+  width: 150px;
+  height: 350px;
+`;
 const CastImg = styled.img``;
 const CastName = styled.p``;
 const CastCharacter = styled.p``;
@@ -32,12 +41,13 @@ const Cast = () => {
             {actor.profile_path ? (
               <CastImg
                 src={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}
-                width={100}
+                width={150}
               />
             ) : (
               <CastImg
                 src="https://img.freepik.com/free-vector/question-mark-sign-brush-stroke-trash-style-typography-vector_53876-140880.jpg?w=2000"
-                width={100}
+                width={150}
+                height={225}
               />
             )}
             <CastName>{actor.name}</CastName>

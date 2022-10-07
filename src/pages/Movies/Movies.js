@@ -1,15 +1,30 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieByName } from 'Api/fetchApi';
-import { Header } from 'components/Header/Header';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { SearchButton } from 'components/SearchBar/SearchBarStyled';
-import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from '../../components/TrendsList/TrendsListStyled';
 
 const List = styled.ul`
+  padding: 0;
   list-style: none;
 `;
-const Item = styled.li``;
+const Item = styled.li`
+  margin-bottom: 10px;
+`;
+const SearchInputBox = styled.div`
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+`;
+const MovieListBox = styled.div`
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+`;
 
 const Movies = () => {
   const [movieNames, setMovieNames] = useState(null);
@@ -35,21 +50,25 @@ const Movies = () => {
 
   return (
     <>
-      <SearchBar value={searchValue} onChange={changeSearchValue} />
-      <SearchButton type="button" onClick={handleClickButton}>
-        Search
-      </SearchButton>
-      {movieNames && (
-        <List>
-          {movieNames.map(movie => (
-            <Item key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </Item>
-          ))}
-        </List>
-      )}
+      <SearchInputBox>
+        <SearchBar value={searchValue} onChange={changeSearchValue} />
+        <SearchButton type="button" onClick={handleClickButton}>
+          Search
+        </SearchButton>
+      </SearchInputBox>
+      <MovieListBox>
+        {movieNames && (
+          <List>
+            {movieNames.map(movie => (
+              <Item key={movie.id}>
+                <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                  {movie.title}
+                </Link>
+              </Item>
+            ))}
+          </List>
+        )}
+      </MovieListBox>
     </>
   );
 };
