@@ -15,3 +15,11 @@ export const fetchMovieById = async movieId => {
     )
     .then(r => r);
 };
+
+export const fetchMovieCast = async movieId => {
+  return await axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+    )
+    .then(r => r);
+};
