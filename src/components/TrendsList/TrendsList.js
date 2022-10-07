@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { List, Item } from './TrendsListStyled';
 export const Trends = ({ trends }) => {
@@ -13,4 +14,13 @@ export const Trends = ({ trends }) => {
       ))}
     </List>
   );
+};
+
+Trends.propTypes = {
+  trends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

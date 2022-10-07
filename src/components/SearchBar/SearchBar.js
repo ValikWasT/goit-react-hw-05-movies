@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { SearchBox, SearchInput } from './SearchBarStyled';
 export const SearchBar = ({ value, onChange }) => {
   return (
@@ -9,4 +10,9 @@ export const SearchBar = ({ value, onChange }) => {
       />
     </SearchBox>
   );
+};
+
+SearchBar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
