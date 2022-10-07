@@ -35,7 +35,6 @@ const Movies = () => {
 
   return (
     <>
-      <Header />
       <SearchBar value={searchValue} onChange={changeSearchValue} />
       <SearchButton type="button" onClick={handleClickButton}>
         Search

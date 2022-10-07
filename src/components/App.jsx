@@ -13,19 +13,22 @@ const MovieDetails = lazy(() => import('../components/MovieDetails/MovieDetails'
 const Cast = lazy(() => import('../pages/Cast/Cast'))
 const Reviews = lazy(() => import('../pages/Reviews/Reviews'))
 const NotFound = lazy(() => import('../components/NotFound/NotFound'))
+const SharedLayout = lazy(() => import("../components/SharedLayout/SharedLayout"))
 
 export const App = () => {
   return (
     <>
       <Suspense>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/movies' element={<Movies />}/>
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path='cast' element={<Cast />}></Route>
-          <Route path='reviews' element={<Reviews />}></Route>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />}/>
+            <Route path='movies' element={<Movies />}/>
+            <Route path="movies/:movieId" element={<MovieDetails />}>
+              <Route path='cast' element={<Cast />}></Route>
+              <Route path='reviews' element={<Reviews />}></Route>
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
     </>

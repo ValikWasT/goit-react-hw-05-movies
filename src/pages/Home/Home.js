@@ -15,7 +15,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <Title>Trending today</Title>
       <Trends trends={movies} />
     </>

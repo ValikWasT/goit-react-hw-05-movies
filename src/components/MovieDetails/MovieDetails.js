@@ -33,7 +33,6 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Header />
       <MainInfoBox>
         <Link to={BackLinkHref}>Back</Link>
         <MovieImg src={`https://image.tmdb.org/t/p/w300/${poster_path}`} />
