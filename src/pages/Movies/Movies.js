@@ -29,8 +29,8 @@ const MovieListBox = styled.div`
 const Movies = () => {
   const [movieNames, setMovieNames] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState('');
   const searchQuery = searchParams.get('query') ?? '';
+  const [searchValue, setSearchValue] = useState(searchQuery ?? '');
   const location = useLocation();
 
   useEffect(() => {
